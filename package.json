@@ -1,0 +1,34 @@
+{
+  "name": "test-docker",
+  "private": true,
+  "version": "1.0.0",
+  "description": "Test docker build for gocd",
+  "main": "index.js",
+  "scripts": {
+    "start": "node .",
+    "dev": "cross-env NODE_ENV=development node .",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osd-henry/test-docker.git"
+  },
+  "keywords": [
+    "docker",
+    "test",
+    "gocd"
+  ],
+  "author": "Hung Luu <hungluu2106@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/osd-henry/test-docker/issues"
+  },
+  "homepage": "https://github.com/osd-henry/test-docker#readme",
+  "dependencies": {
+    "express": "^4.17.0"
+  },
+  "devDependencies": {
+    "cross-env": "^5.2.0",
+    "open": "^6.3.0"
+  }
+}
