@@ -25,9 +25,7 @@
   },
   "homepage": "https://github.com/osd-henry/test-docker#readme",
   "dependencies": {
-    "express": "^4.17.0"
-  },
-  "devDependencies": {
+    "express": "^4.17.0",
     "cross-env": "^5.2.0",
     "open": "^6.3.0"
   }
