@@ -4,5 +4,7 @@ services:
     build:
       context: .
     command: "yarn start"
+    environment:
+      - IMAGE_TAG=moe-webinar-docker-test
     ports:
       - "80:3000"
