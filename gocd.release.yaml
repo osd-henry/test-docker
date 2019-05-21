@@ -30,7 +30,7 @@ pipelines:
     materials:
       upstream:
         pipeline: moe-webinar-build
-        stage: test-docker-deploy
+        stage: test-local-docker-build
     label_template: "${upstream}"
     stages:
       -
