@@ -8,8 +8,6 @@ pipelines:
   moe-webinar-build:
     group: moe-webinar
     lock_behavior: none
-    environment_variables:
-      IMAGE_TAG: moe-webinar-docker-test
     materials:
       github-git:
         branch: master
