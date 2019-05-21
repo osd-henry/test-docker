@@ -6,6 +6,7 @@ environments:
 format_version: 3
 pipelines:
   moe-webinar-build:
+    group: moe-webinar
     lock_behavior: none
     materials:
       github-git:
@@ -24,6 +25,7 @@ pipelines:
                   script: |-
                       ./scripts/build.sh
   moe-webinar-deploy:
+    group: moe-webinar
     lock_behavior: none
     materials:
       upstream:
@@ -45,5 +47,5 @@ pipelines:
               tasks:
                 -
                   script: |-
-                      ./scripts/deploy.sh git@github.com:osd-henry/test-docker.git --to root@104.248.157.25 --into-folder app --using-rsa-key ~/.ssh/cxs-gocd-rsa
+                      ./scripts/deploy.sh git@github.com:osd-henry/test-docker.git --to root@104.248.157.25 --into-folder app --using-rsa-key /var/go/.ssh/webminar_id_rsa
                   run_if: passed
