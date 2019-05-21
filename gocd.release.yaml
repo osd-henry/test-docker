@@ -30,6 +30,7 @@ pipelines:
         pipeline: moe-webinar-build
         stage: test-docker-deploy
     label_template: "${upstream}"
+    stages:
       -
         run-deploy-script:
           fetch_materials: no
