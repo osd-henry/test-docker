@@ -18,8 +18,8 @@ pipelines:
         test-local-docker-build:
           jobs:
             prepare-build:
-              # resources:
-              #   - linux-build
+              resources:
+                - linux-build
               tasks:
                 -
                   script: |-
@@ -39,8 +39,8 @@ pipelines:
           jobs:
             run-deploy-script:
               run_instances: all
-              # resources:
-              #   - win-deploy
+              resources:
+                - linux-deploy
               # artifacts:
               #   - build:
               #       source: source
