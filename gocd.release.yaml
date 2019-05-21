@@ -23,8 +23,7 @@ pipelines:
               tasks:
                 -
                   script: |-
-                      cd source/scripts
-                      ./build.sh
+                      ./source/scripts/build.sh
   moe-webinar-deploy:
     group: moe-webinar
     lock_behavior: none
@@ -48,6 +47,5 @@ pipelines:
               tasks:
                 -
                   script: |-
-                      cd source/scripts
-                      ./deploy.sh git@github.com:osd-henry/test-docker.git --to root@104.248.157.25 --into-folder app --using-rsa-key /var/go/.ssh/webminar_id_rsa
+                      ./source/scripts/deploy.sh git@github.com:osd-henry/test-docker.git --to root@104.248.157.25 --into-folder app --using-rsa-key /var/go/.ssh/webminar_id_rsa
                   run_if: passed
