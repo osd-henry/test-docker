@@ -39,24 +39,7 @@ pipelines:
     label_template: "${upstream}"
     stages:
       -
-        fetch-deploy-files:
-          jobs:
-            fetch-deploy-files:
-              run_instances: all
-              resources:
-                - linux-deploy
-              tasks:
-                -
-                  fetch:
-                    pipeline: moe-webinar-build
-                    stage: test-local-docker-build
-                    job: test-local-docker-build
-                    source: built_artifacts
-                    destination: source
-                  run_if: passed
-      -
         run-deploy-script:
-          # fetch_materials: no
           jobs:
             run-deploy-script:
               run_instances: all
@@ -66,6 +49,14 @@ pipelines:
                 - build:
                     source: source
               tasks:
+                -
+                  fetch:
+                    pipeline: moe-webinar-build
+                    stage: test-local-docker-build
+                    job: test-local-docker-build
+                    source: built_artifacts
+                    destination: source
+                  run_if: passed
                 -
                   script: |-
                       echo "List current folder:"
