@@ -28,8 +28,8 @@ pipelines:
                       sudo bash ./scripts/build_artifacts.sh
               artifacts:
                 - build:
-                    source: source/artifacts
-                    destination: source
+                    source: artifacts
+                    destination: artifacts
   moe-webinar-deploy:
     group: moe-webinar
     lock_behavior: none
@@ -52,7 +52,7 @@ pipelines:
                     pipeline: moe-webinar-build
                     stage: test-local-docker-build
                     job: test-local-docker-build
-                    source: source
+                    source: artifacts
                   run_if: passed
       -
         run-deploy-script:
@@ -64,7 +64,7 @@ pipelines:
                 - linux-deploy
               artifacts:
                 - build:
-                    source: source
+                    source: artifacts
                     destination: deploy
               tasks:
                 -
