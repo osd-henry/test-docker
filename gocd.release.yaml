@@ -23,7 +23,8 @@ pipelines:
               tasks:
                 -
                   script: |-
-                      sudo bash ./source/scripts/build.sh
+                      cd source
+                      sudo bash ./scripts/build.sh
   moe-webinar-deploy:
     group: moe-webinar
     lock_behavior: none
