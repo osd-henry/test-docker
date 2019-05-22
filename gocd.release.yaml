@@ -56,5 +56,5 @@ pipelines:
                 -
                   script: |-
                       cd built_artifacts/source
-                      sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d
+                      sudo docker-compose download
                   run_if: passed
