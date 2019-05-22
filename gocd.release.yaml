@@ -26,17 +26,6 @@ pipelines:
                       cd source
                       sudo bash ./scripts/build.sh
                       sudo bash ./scripts/build_artifacts.sh
-      -
-        push-artifacts:
-          jobs:
-            push-artifacts:
-              resources:
-                - linux-build
-              tasks:
-                -
-                  script: |-
-                      cd source
-                  run_if: passed
               artifacts:
                 - build:
                     source: source/artifacts
@@ -47,7 +36,7 @@ pipelines:
     materials:
       upstream:
         pipeline: moe-webinar-build
-        stage: push-artifacts
+        stage: test-local-docker-build
     label_template: "${upstream}"
     stages:
       -
@@ -61,8 +50,8 @@ pipelines:
                 -
                   fetch:
                     pipeline: moe-webinar-build
-                    stage: push-artifacts
-                    job: push-artifacts
+                    stage: test-local-docker-build
+                    job: test-local-docker-build
                     source: source
                   run_if: passed
       -
