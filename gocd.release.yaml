@@ -25,6 +25,7 @@ pipelines:
                   script: |-
                       cd source
                       sudo bash ./scripts/build.sh
+                      sudo bash ./scripts/build_artifacts.sh
       -
         push-artifacts:
           jobs:
@@ -35,7 +36,6 @@ pipelines:
                 -
                   script: |-
                       cd source
-                      sudo bash ./scripts/build_artifacts.sh
                   run_if: passed
               artifacts:
                 - build:
