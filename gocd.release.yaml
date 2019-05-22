@@ -55,7 +55,6 @@ pipelines:
                   run_if: passed
       -
         run-deploy-script:
-          fetch_materials: no
           jobs:
             run-deploy-script:
               run_instances: all
