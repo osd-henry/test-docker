@@ -10,3 +10,5 @@ do
     echo "Copying source/$i..."
     cp "source/$i" "$ARTIFACT_DIR"
 done
+
+ls "$ARTIFACT_DIR"
