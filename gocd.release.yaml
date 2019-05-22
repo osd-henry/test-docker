@@ -52,6 +52,7 @@ pipelines:
                     stage: test-local-docker-build
                     job: test-local-docker-build
                     source: built_artifacts
+                    destination: source
                   run_if: passed
       -
         run-deploy-script:
@@ -61,6 +62,9 @@ pipelines:
               run_instances: all
               resources:
                 - linux-deploy
+              artifacts:
+                - build:
+                    source: source
               tasks:
                 -
                   script: |-
