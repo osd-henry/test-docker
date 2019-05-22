@@ -40,7 +40,7 @@ pipelines:
               artifacts:
                 - build:
                     source: source/artifacts
-                    destination: dist
+                    destination: source
   moe-webinar-deploy:
     group: moe-webinar
     lock_behavior: none
@@ -63,7 +63,7 @@ pipelines:
                     pipeline: moe-webinar-build
                     stage: push-artifacts
                     job: push-artifacts
-                    source: dist
+                    source: source
                   run_if: passed
       -
         run-deploy-script:
@@ -75,7 +75,7 @@ pipelines:
                 - linux-deploy
               artifacts:
                 - build:
-                    source: dist
+                    source: source
                     destination: deploy
               tasks:
                 -
