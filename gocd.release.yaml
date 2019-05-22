@@ -56,5 +56,5 @@ pipelines:
                 -
                   script: |-
                       cd built_artifacts/source
-                      sudo docker-compose download
+                      sudo docker-compose down
                   run_if: passed
