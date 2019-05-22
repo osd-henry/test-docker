@@ -25,7 +25,6 @@ pipelines:
                   script: |-
                       cd source
                       sudo bash ./scripts/build.sh
-                      # bash ./scripts/build_artifacts.sh
               artifacts:
                 - build:
                     source: source
