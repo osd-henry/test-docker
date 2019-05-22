@@ -17,7 +17,7 @@ pipelines:
       -
         test-local-docker-build:
           jobs:
-            prepare-build:
+            test-local-docker-build:
               resources:
                 - linux-build
               tasks:
@@ -25,15 +25,46 @@ pipelines:
                   script: |-
                       cd source
                       sudo bash ./scripts/build.sh
+      -
+        push-artifacts:
+          jobs:
+            push-artifacts:
+              resources:
+                - linux-build
+              tasks:
+                -
+                  script: |-
+                      cd source
+                      sudo bash ./scripts/build_artifacts.sh
+                  run_if: passed
+              artifacts:
+                - build:
+                    source: source/artifacts
+                    destination: dist
   moe-webinar-deploy:
     group: moe-webinar
     lock_behavior: none
     materials:
       upstream:
         pipeline: moe-webinar-build
-        stage: test-local-docker-build
+        stage: push-artifacts
     label_template: "${upstream}"
     stages:
+    -
+      fetch-deploy-files:
+        jobs:
+          fetch-deploy-files:
+            run_instances: all
+            resources:
+              - linux-deploy
+            tasks:
+              -
+                fetch:
+                  pipeline: moe-webinar-build
+                  stage: push-artifacts
+                  job: push-artifacts
+                  source: dist
+                run_if: passed
       -
         run-deploy-script:
           fetch_materials: no
@@ -42,11 +73,12 @@ pipelines:
               run_instances: all
               resources:
                 - linux-deploy
-              # artifacts:
-              #   - build:
-              #       source: source
+              artifacts:
+                - build:
+                    source: dist
+                    destination: deploy
               tasks:
                 -
                   script: |-
-                      ./source/scripts/deploy.sh git@github.com:osd-henry/test-docker.git --to root@104.248.157.25 --into-folder app --using-rsa-key /var/go/.ssh/webminar_id_rsa
+                      ./deploy/scripts/deploy.sh git@github.com:osd-henry/test-docker.git --to root@104.248.157.25 --into-folder app --using-rsa-key /var/go/.ssh/webminar_id_rsa
                   run_if: passed
