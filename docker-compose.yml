@@ -1,8 +1,8 @@
 version: "3"
 services:
-  web:
-    build:
-      context: .
-    command: "yarn start"
-    ports:
-      - "80:3000"
+    web:
+        build:
+            context: .
+        command: "yarn start"
+        ports:
+            - "80:3000"
