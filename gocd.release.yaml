@@ -71,7 +71,7 @@ pipelines:
                       echo "List current folder:"
                       ls .
                       echo "List artifacts:"
-                      ls built_artifacts
+                      ls source
                       cd built_artifacts
                       ./scripts/deploy.sh git@github.com:osd-henry/test-docker.git --to root@104.248.157.25 --into-folder app --using-rsa-key /var/go/.ssh/webminar_id_rsa
                   run_if: passed
