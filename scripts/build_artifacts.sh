@@ -6,5 +6,5 @@ cd ..
 mkdir -p "$ARTIFACT_DIR"
 for i in "${FILES[@]}"
 do
-    cp $i "$ARTIFACT_DIR"
+    cp "source/$i" "$ARTIFACT_DIR"
 done
