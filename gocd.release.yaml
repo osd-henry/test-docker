@@ -28,7 +28,7 @@ pipelines:
                       sudo bash ./scripts/build_artifacts.sh
               artifacts:
                 - build:
-                    source: ../artifacts
+                    source: artifacts
                     destination: built_artifacts
   moe-webinar-deploy:
     group: moe-webinar
@@ -64,7 +64,7 @@ pipelines:
                 - linux-deploy
               artifacts:
                 - build:
-                    source: built_artifacts
+                    source: artifacts
                     destination: deploy
               tasks:
                 -
