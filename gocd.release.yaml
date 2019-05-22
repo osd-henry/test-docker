@@ -25,10 +25,10 @@ pipelines:
                   script: |-
                       cd source
                       sudo bash ./scripts/build.sh
-                      bash ./scripts/build_artifacts.sh
+                      # bash ./scripts/build_artifacts.sh
               artifacts:
                 - build:
-                    source: artifacts
+                    source: source
                     destination: built_artifacts
   moe-webinar-deploy:
     group: moe-webinar
