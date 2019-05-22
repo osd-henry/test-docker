@@ -25,7 +25,7 @@ pipelines:
                   script: |-
                       cd source
                       sudo bash ./scripts/build.sh
-                      sudo bash ./scripts/build_artifacts.sh
+                      bash ./scripts/build_artifacts.sh
               artifacts:
                 - build:
                     source: artifacts
@@ -34,7 +34,7 @@ pipelines:
     group: moe-webinar
     lock_behavior: none
     materials:
-      upstream:
+      upstream: 
         pipeline: moe-webinar-build
         stage: test-local-docker-build
     label_template: "${upstream}"
