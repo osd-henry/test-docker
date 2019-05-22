@@ -29,7 +29,7 @@ pipelines:
               artifacts:
                 - build:
                     source: artifacts
-                    destination: artifacts
+                    destination: built_artifacts
   moe-webinar-deploy:
     group: moe-webinar
     lock_behavior: none
@@ -52,7 +52,7 @@ pipelines:
                     pipeline: moe-webinar-build
                     stage: test-local-docker-build
                     job: test-local-docker-build
-                    source: artifacts
+                    source: built_artifacts
                   run_if: passed
       -
         run-deploy-script:
@@ -64,7 +64,7 @@ pipelines:
                 - linux-deploy
               artifacts:
                 - build:
-                    source: artifacts
+                    source: built_artifacts
                     destination: deploy
               tasks:
                 -
