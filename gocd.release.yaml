@@ -50,21 +50,21 @@ pipelines:
         stage: push-artifacts
     label_template: "${upstream}"
     stages:
-    -
-      fetch-deploy-files:
-        jobs:
-          fetch-deploy-files:
-            run_instances: all
-            resources:
-              - linux-deploy
-            tasks:
-              -
-                fetch:
-                  pipeline: moe-webinar-build
-                  stage: push-artifacts
-                  job: push-artifacts
-                  source: dist
-                run_if: passed
+      -
+        fetch-deploy-files:
+          jobs:
+            fetch-deploy-files:
+              run_instances: all
+              resources:
+                - linux-deploy
+              tasks:
+                -
+                  fetch:
+                    pipeline: moe-webinar-build
+                    stage: push-artifacts
+                    job: push-artifacts
+                    source: dist
+                  run_if: passed
       -
         run-deploy-script:
           fetch_materials: no
