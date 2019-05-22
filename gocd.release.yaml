@@ -45,9 +45,6 @@ pipelines:
               run_instances: all
               resources:
                 - linux-deploy
-              artifacts:
-                - build:
-                    source: source
               tasks:
                 -
                   fetch:
