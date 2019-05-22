@@ -7,4 +7,4 @@ UPDATE_SOURCE="mv $DEPLOY_DIR $DEPLOY_DIR.bak && rm -rf $DEPLOY_DIR && git clone
 START_SERVER="sudo docker-compose -f docker-compose.yml -f docker-compose.prod.yml up --build -d"
 COMMANDS="$UPDATE_SOURCE && cd $DEPLOY_DIR && $START_SERVER"
 
-ssh -i "$SSH_KEY" "$DEPLOY_HOST" "$COMMANDS"
+sudo ssh -i "$SSH_KEY" "$DEPLOY_HOST" "$COMMANDS"
